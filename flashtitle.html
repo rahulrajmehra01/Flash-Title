@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Program</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-41h+MG1TcT9DW0/SPRXkZedF/4ziwvzgCUnb2l+Wz1HeSaQ2QAVBhOemOZMfnpZ/QoBzvugOJpFt1OeBmNT0Ig==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+
+<script>
+let setIntervalID;
+
+const flashTitle = (orgTitle, newTitle) => {
+    // toggle the document title between two values
+    document.title = document.title === orgTitle ? newTitle : orgTitle;
+}
+
+document.addEventListener("visibilitychange", () => {
+    // if page is visible, change title & clear interval
+    if (document.visibilityState === "visible") {
+        document.title = "Program";
+        clearInterval(setIntervalID);
+        return;
+    }
+    // if page is hidden, set interval to toggle title
+    setIntervalID = setInterval(() => {
+        flashTitle("Program", "Please come back");
+    }, 500);
+});
+</script>
+
+</body>
+</html>
